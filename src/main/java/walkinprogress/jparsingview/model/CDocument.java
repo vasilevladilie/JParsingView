@@ -6,8 +6,7 @@ public class CDocument
 	{
 		m_strName = new String ( );
 		m_refRoot = new CNode ( );
-	}
-	
+	}	
 	public void linkNode ( CNode refParent, CNode refChild )
 	{
 		refParent.addChild(refChild);
@@ -18,7 +17,12 @@ public class CDocument
 		refNewNode.setName ( strId );
 		refParent.addChild( refNewNode );
 		return refNewNode;
-	}	
+	}
+	public CNode setParent ( String strQName )
+	{
+		m_refRoot.setName ( strQName );;
+		return m_refRoot;
+	}
 	/*
 	 * Data members
 	 */

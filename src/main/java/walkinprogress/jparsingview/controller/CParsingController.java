@@ -16,6 +16,7 @@ import walkinprogress.jparsingview.parser.CParserHandler;
  */
 
 public class CParsingController 
+	implements walkinprogress.jparsingview.ifc.IObserver
 {
 	public CParsingController ( )
 	{
@@ -23,11 +24,17 @@ public class CParsingController
 		m_refHandler = new CParserHandler ( );
 		m_strFile    = null;
 	}
+	@Override
+	public void dispatch ( Object objEvent ) 
+	{
+		m_refParsingMethod.processEvent ( objEvent, m_refModel );		
+	}
 	void startParsing ( )
 	{
 		m_refParser.setHandler ( m_refHandler );
+		m_refHandler.registerObserver ( this );
 		try 
-		{
+		{			
 			m_refParser.readDataFromXML ( m_strFile );
 			
 		} catch (IOException | SAXException | ParserConfigurationException e)
@@ -43,7 +50,12 @@ public class CParsingController
 	{
 		return m_strFile;
 	}
+	/**
+	 * Data members
+	 */
 	private CParser m_refParser;
 	private CParserHandler m_refHandler;
 	private String m_strFile;
+	private CParsingMethod m_refParsingMethod;
+	private walkinprogress.jparsingview.model.CDocument m_refModel;
 }
