@@ -10,15 +10,13 @@ import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
-import org.w3c.dom.Document;
-import org.w3c.dom.Element;
-import org.w3c.dom.Node;
-import org.w3c.dom.NodeList;
-import javax.xml.parsers.DocumentBuilder;
-import javax.xml.parsers.DocumentBuilderFactory;
 import java.io.*;
 /**
  * Created by taoLen on 4/28/2018.
+ */
+/**
+ * You have to add the jfxrt.\ jar library 
+ * to the project to find the imports.
  */
 public class XMLSearch extends Application {
     Button button;
