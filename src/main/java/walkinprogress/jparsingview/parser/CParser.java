@@ -26,7 +26,7 @@ public class CParser
         if ( null == m_refHandler)
         {
         	throw new NullPointerException ( );
-        }        
+        }
         refParser.parse( new File ( strFilename ), m_refHandler );
     }
     
