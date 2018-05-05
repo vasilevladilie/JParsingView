@@ -1,6 +1,7 @@
 package walkinprogress.jparsingview.model;
 
-public class CDocument 
+
+public class CDocument implements walkinprogress.jparsingview.ifc.Visitable
 {
 	public CDocument ( )
 	{
@@ -13,15 +14,32 @@ public class CDocument
 	}
 	public CNode linkNode ( CNode refParent, String strId )
 	{
-		CNode refNewNode = CNodeFactory.instance ( ).create ( );
-		refNewNode.setName ( strId );
-		refParent.addChild( refNewNode );
+		CNode refNewNode = null;
+		if ( null != refParent )
+		{
+			refNewNode = CNodeFactory.instance ( ).create ( );
+			refNewNode.setName   ( strId );
+			refParent.addChild   ( refNewNode );
+			refNewNode.setParent ( refParent );
+		}
 		return refNewNode;
 	}
 	public CNode setParent ( String strQName )
 	{
 		m_refRoot.setName ( strQName );;
 		return m_refRoot;
+	}
+	public CNode getParent ( )
+	{
+		return m_refRoot;
+	}
+	@Override
+	public void accept ( walkinprogress.jparsingview.ifc.Visitor objVisitor )
+	{
+		/*
+		 * Just do the double dispatch
+		 */
+		objVisitor.visit ( this );
 	}
 	/*
 	 * Data members

@@ -4,8 +4,10 @@ public class CParsingMethod
 {
 	public CParsingMethod ( )
 	{
-		m_bSibling = true;
+		m_bSibling   = true;
 		m_bHasParent = false;
+		m_refParent  = null;
+		m_refChild   = null;
 	}
 	public void processEvent
 	(
@@ -14,7 +16,16 @@ public class CParsingMethod
 	)
 	{
 		walkinprogress.jparsingview.parser.CParsingEvent
-			evParsing = (walkinprogress.jparsingview.parser.CParsingEvent)( objEvent );
+		evParsing = 
+		(walkinprogress.jparsingview.parser.CParsingEvent)( objEvent );
+		if ( null == evParsing )
+		{
+			throw new NullPointerException ( );
+		}
+		if ( null == refModel )
+		{
+			throw new NullPointerException ( );
+		}
 		switch ( evParsing.getEvent ( ) )
 		{
 			case START_DOCUMENT :
@@ -43,6 +54,7 @@ public class CParsingMethod
 						( walkinprogress.jparsingview.model.CNode )m_refParent,
 						evParsing.getQName ( )
 					);
+					
 				}
 				else
 				{
@@ -60,6 +72,10 @@ public class CParsingMethod
 			}
 			case END_ELEMENT :
 			{
+				if ( null == m_refChild )
+				{
+					throw new NullPointerException ( );					
+				}
 				Object objSiftUp = m_refParent;
 				m_refParent = 
 				(
@@ -67,7 +83,7 @@ public class CParsingMethod
 					m_refChild
 				).getParent ( );
 				m_refChild = objSiftUp;
-				m_bSibling = true;
+				m_bSibling = true;			
 				break;				
 			}
 			case CHARACTERS :
@@ -75,9 +91,9 @@ public class CParsingMethod
 				/**
 				 * Link the characters to the current parent;
 				 */
-				
+				//assert null == m_refParent ;
 				( ( walkinprogress.jparsingview.model.CNode ) m_refParent )
-				.setCharacters ( evParsing.getCharacters ( ) );
+				.setCharacters ( evParsing.getCharacters ( ) );			
 				break;
 			}
 			default :

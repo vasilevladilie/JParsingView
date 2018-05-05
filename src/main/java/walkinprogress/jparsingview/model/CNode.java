@@ -1,6 +1,8 @@
 package walkinprogress.jparsingview.model;
 
-public class CNode
+import java.util.ListIterator;
+
+public class CNode implements walkinprogress.jparsingview.ifc.Visitable
 {
 	/*
 	 * Methods
@@ -9,6 +11,7 @@ public class CNode
 	{
 		m_strName = null;
 		m_strCharacters = null;
+		m_lstChildren = new java.util.ArrayList < CNode > ( );
 	}
 	public String getName ( )
 	{
@@ -22,9 +25,9 @@ public class CNode
 	{
 		m_lstChildren.add ( refChild );
 	}
-	public CNode getChild ( int iIndex )
+	public ListIterator<CNode> getChildren ( )
 	{
-		return m_lstChildren.get ( iIndex );
+		return m_lstChildren.listIterator ( );
 	}
 	public CNode getParent ( )
 	{
@@ -59,6 +62,11 @@ public class CNode
 	public boolean hasCharacters ( )
 	{
 		return ( null != m_strCharacters );
+	}
+	@Override
+	public void accept ( walkinprogress.jparsingview.ifc.Visitor objVisitor )
+	{
+		objVisitor.visit ( this );
 	}
 	/*
 	 * Data members
