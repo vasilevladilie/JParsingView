@@ -2,6 +2,10 @@ package walkinprogress.jparsingview.controller;
 
 import walkinprogress.jparsingview.ifc.Visitable;
 import walkinprogress.jparsingview.ifc.Visitor;
+import walkinprogress.jparsingview.model.CDocument;
+import walkinprogress.jparsingview.model.CNode;
+
+import java.util.ListIterator;
 
 public class CDocVisitor implements Visitor
 {
@@ -14,17 +18,14 @@ public class CDocVisitor implements Visitor
 			 * \desc Add here method to process 
 			 * sequentially each node of the Document Model
 			 */
-			walkinprogress.jparsingview.model.CNode objNode = null;
-			objNode = ((walkinprogress.jparsingview.model.CNode)objVisitable);
+			CNode objNode = null;
+			objNode = ((CNode)objVisitable);
 			System.out.println ( objNode.getName ( ) + "\n" );
 			/*
 			 * Do recursion on the list of children nodes 
 			 */
 	
-			java.util.ListIterator
-			<
-				walkinprogress.jparsingview.model.CNode
-			> nodeIterator = null;
+			ListIterator<CNode> nodeIterator = null;
 			nodeIterator = objNode.getChildren ( );
 			while ( true == nodeIterator.hasNext ( ) )
 			{				
@@ -39,13 +40,8 @@ public class CDocVisitor implements Visitor
 	@Override
 	public void visit ( Visitable objVisitable )
 	{
-		
 		objNodeVisitor.visit
-		(
-				(
-					(walkinprogress.jparsingview.model.CDocument)objVisitable
-				).getParent ( )
-		);
+		(((CDocument)objVisitable).getParent());
 	}
 	
 	private CNodeVisitor objNodeVisitor;
