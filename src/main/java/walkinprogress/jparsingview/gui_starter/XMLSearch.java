@@ -18,13 +18,13 @@ import java.io.*;
  * You have to add the jfxrt.\ jar library 
  * to the project to find the imports.
  */
+
 public class XMLSearch extends Application {
     Button button;
     TextField filename;
     TextField pathName;
     Scene scene;
 
-    public static void main(String[] args){launch(args);}
 
     @Override
     public void start(Stage primaryStage) throws Exception{
@@ -69,7 +69,7 @@ public class XMLSearch extends Application {
                 //prepare the string builder
                 StringBuilder builder = new StringBuilder();
                 //getting the path from xml file
-                String filePath = pathName.getText();
+                String filePath = "/home/vladilie/workspace/github/JParsingView/src/main/resources/input/01.xml";
                 File xmlFile = new File(filePath);
                 //reading from xml file
                 Reader fileReader = new FileReader(xmlFile); //using polymorphism here
@@ -78,6 +78,7 @@ public class XMLSearch extends Application {
                 while(line != null){
                     builder.append(line).append("\n");
                     line = bufferedReader.readLine();
+                    System.out.println(line);
                 }
                 bufferedReader.close();
 //                //printing content

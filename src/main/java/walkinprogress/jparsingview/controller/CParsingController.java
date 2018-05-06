@@ -18,18 +18,23 @@ import walkinprogress.jparsingview.parser.CParserHandler;
 public class CParsingController 
 	implements walkinprogress.jparsingview.ifc.IObserver
 {
-	public CParsingController ( )
+	public CParsingController
+	(
+		walkinprogress.jparsingview.model.CDocument refModel
+	)
 	{
 		m_refParser  = new CParser ( );
 		m_refHandler = new CParserHandler ( );
 		m_strFile    = null;
+		m_refParsingMethod  = new CParsingMethod ( );
+		m_refModel = refModel;
 	}
 	@Override
 	public void dispatch ( Object objEvent ) 
 	{
 		m_refParsingMethod.processEvent ( objEvent, m_refModel );		
 	}
-	void startParsing ( )
+	public void startParsing ( )
 	{
 		m_refParser.setHandler ( m_refHandler );
 		m_refHandler.registerObserver ( this );
