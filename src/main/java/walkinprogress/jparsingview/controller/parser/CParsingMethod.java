@@ -1,4 +1,4 @@
-package walkinprogress.jparsingview.controller;
+package walkinprogress.jparsingview.controller.parser;
 
 public class CParsingMethod 
 {

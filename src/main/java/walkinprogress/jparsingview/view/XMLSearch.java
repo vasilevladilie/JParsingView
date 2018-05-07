@@ -1,4 +1,4 @@
-package walkinprogress.jparsingview.gui_starter;
+package walkinprogress.jparsingview.view;
 import javafx.application.Application;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;

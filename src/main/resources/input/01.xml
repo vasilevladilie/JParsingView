@@ -1,0 +1,7 @@
+<root>
+	<child1></child1>
+	<child2>Some text</child2>
+	<child3>
+	<child4></child4>
+	</child3>
+</root>
