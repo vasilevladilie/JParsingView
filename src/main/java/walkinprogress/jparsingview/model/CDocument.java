@@ -1,10 +1,7 @@
 package walkinprogress.jparsingview.model;
 
 
-import walkinprogress.jparsingview.ifc.Visitable;
-import walkinprogress.jparsingview.ifc.Visitor;
-
-public class CDocument implements Visitable
+public class CDocument implements walkinprogress.jparsingview.ifc.Visitable
 {
 	public CDocument ( )
 	{
@@ -37,7 +34,7 @@ public class CDocument implements Visitable
 		return m_refRoot;
 	}
 	@Override
-	public void accept ( Visitor objVisitor )
+	public void accept ( walkinprogress.jparsingview.ifc.Visitor objVisitor )
 	{
 		/*
 		 * Just do the double dispatch

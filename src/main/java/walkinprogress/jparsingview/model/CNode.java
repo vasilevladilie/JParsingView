@@ -1,11 +1,8 @@
 package walkinprogress.jparsingview.model;
 
-import walkinprogress.jparsingview.ifc.Visitable;
-import walkinprogress.jparsingview.ifc.Visitor;
-
 import java.util.ListIterator;
 
-public class CNode implements Visitable
+public class CNode implements walkinprogress.jparsingview.ifc.Visitable
 {
 	/*
 	 * Methods
@@ -67,7 +64,7 @@ public class CNode implements Visitable
 		return ( null != m_strCharacters );
 	}
 	@Override
-	public void accept ( Visitor objVisitor )
+	public void accept ( walkinprogress.jparsingview.ifc.Visitor objVisitor )
 	{
 		objVisitor.visit ( this );
 	}

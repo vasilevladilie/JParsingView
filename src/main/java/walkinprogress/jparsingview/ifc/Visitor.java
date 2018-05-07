@@ -9,5 +9,5 @@ package walkinprogress.jparsingview.ifc;
  */
 public interface Visitor 
 {
-	public void visit ( Visitable objVisitable );
+	public void visit ( walkinprogress.jparsingview.ifc.Visitable objVisitable );
 }

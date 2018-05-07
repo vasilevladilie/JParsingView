@@ -2,19 +2,17 @@ package walkinprogress.jparsingview.parser;
 
 import org.xml.sax.SAXException;
 import org.xml.sax.helpers.DefaultHandler;
-import walkinprogress.jparsingview.ifc.IObservable;
-import walkinprogress.jparsingview.ifc.IObserver;
 
 
 public class CParserHandler 
 	extends DefaultHandler 
-	implements IObservable
+	implements walkinprogress.jparsingview.ifc.IObservable
 {
 	public CParserHandler ( )
 	{
 		m_lstObservers = new java.util.ArrayList
 		<
-                IObserver
+			walkinprogress.jparsingview.ifc.IObserver
 		> ( );
 		m_objObserver = new CParsingEvent ( );		
 	}
@@ -25,11 +23,11 @@ public class CParserHandler
        System.out.println("Start Document");
        m_objObserver.setEvent
        (
-    		   CParsingEvent.EVENT.START_DOCUMENT
+    		   walkinprogress.jparsingview.parser.CParsingEvent.EVENT.START_DOCUMENT
        );
        for
        (
-    		   IObserver iObserve : m_lstObservers
+    		   walkinprogress.jparsingview.ifc.IObserver iObserve : m_lstObservers
        )
        {
     	   iObserve.dispatch ( m_objObserver );
@@ -43,11 +41,11 @@ public class CParserHandler
         System.out.println("End Document");
         m_objObserver.setEvent
         (
-        		CParsingEvent.EVENT.END_DOCUMENT
+        		walkinprogress.jparsingview.parser.CParsingEvent.EVENT.END_DOCUMENT
         );
         for
         (
-        		IObserver iObserve : m_lstObservers
+        		walkinprogress.jparsingview.ifc.IObserver iObserve : m_lstObservers
         )
         {
      	   iObserve.dispatch ( m_objObserver );
@@ -69,14 +67,14 @@ public class CParserHandler
         System.out.println("Start element: " + strQName);
         m_objObserver.setEvent
         (
-        		CParsingEvent.EVENT.START_ELEMENT
+        		walkinprogress.jparsingview.parser.CParsingEvent.EVENT.START_ELEMENT 
         );
         m_objObserver.setUri ( strUri );
         m_objObserver.setLocalName ( strLocalName );
         m_objObserver.setQName ( strQName );
         for
         (
-        		IObserver iObserve : m_lstObservers
+        		walkinprogress.jparsingview.ifc.IObserver iObserve : m_lstObservers
         )
         {
      	   iObserve.dispatch ( m_objObserver );
@@ -90,14 +88,14 @@ public class CParserHandler
         System.out.println("End element: " + strQName);
         m_objObserver.setEvent
         (
-        		CParsingEvent.EVENT.END_ELEMENT
+        		walkinprogress.jparsingview.parser.CParsingEvent.EVENT.END_ELEMENT
         );
         m_objObserver.setUri ( strUri );
         m_objObserver.setLocalName ( strLocalName );
         m_objObserver.setQName ( strQName );
         for
         (
-        		IObserver iObserve : m_lstObservers
+        		walkinprogress.jparsingview.ifc.IObserver iObserve : m_lstObservers
         )
         {
      	   iObserve.dispatch ( m_objObserver );
@@ -113,12 +111,12 @@ public class CParserHandler
         objStrBuilder.append 		( strCh, iStart, iLength );
         m_objObserver.setEvent
         (
-        		CParsingEvent.EVENT.CHARACTERS
+        		walkinprogress.jparsingview.parser.CParsingEvent.EVENT.CHARACTERS
         );
         m_objObserver.setCharacters ( objStrBuilder.toString ( ) );
         for
         (
-        		IObserver iObserve : m_lstObservers
+        		walkinprogress.jparsingview.ifc.IObserver iObserve : m_lstObservers
         )
         {
      	   iObserve.dispatch ( m_objObserver );
@@ -126,7 +124,7 @@ public class CParserHandler
     }
 	public void registerObserver
 	( 
-			IObserver iObserve
+			walkinprogress.jparsingview.ifc.IObserver iObserve
 	)
 	{
 		if ( null != iObserve )
@@ -136,7 +134,7 @@ public class CParserHandler
 	}
 	public void unregisterObserver
 	(
-			IObserver iObserve
+			walkinprogress.jparsingview.ifc.IObserver iObserve
 	)
 	{
 		if ( true == m_lstObservers.contains( iObserve ) )
@@ -149,6 +147,8 @@ public class CParserHandler
      * Data members
      */
     private java.util.List
-    <IObserver> m_lstObservers;
+    <
+    	walkinprogress.jparsingview.ifc.IObserver
+    > m_lstObservers;
     private CParsingEvent 			  m_objObserver;
 }
