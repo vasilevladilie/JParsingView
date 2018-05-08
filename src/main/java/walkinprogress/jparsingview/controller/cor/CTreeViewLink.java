@@ -1,4 +1,4 @@
-package walkinprogress.jparsingview.view.cor;
+package walkinprogress.jparsingview.controller.cor;
 
 import walkinprogress.jparsingview.ifc.IChainLink;
 

@@ -1,10 +1,10 @@
 package walkinprogress.jparsingview.controller;
 
+import walkinprogress.jparsingview.controller.cor.CChainController;
 import walkinprogress.jparsingview.controller.parser.CParsingController;
 import walkinprogress.jparsingview.controller.process.CDocVisitor;
 import walkinprogress.jparsingview.ifc.IChainLink;
 import walkinprogress.jparsingview.model.CDocument;
-import walkinprogress.jparsingview.view.cor.CChainController;
 
 public class CController 
 {
